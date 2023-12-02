@@ -3,15 +3,6 @@ const {Skill} = require('../db/models');
 const createSkill = async (req, res) => {
   const {title, verified} = req.body;
 
-
-  // if (error) {
-  //   return res.send({
-  //     status: 422,
-  //     message: 'Invalid request',
-  //     data: req.body
-  //   });
-  // }
-
   const skill = await Skill.create({
     title, verified
   })
@@ -46,7 +37,7 @@ const updateVerifiedSkill = async (req, res) => {
 };
 
 const deleteSkill = async (req, res) => {
-  const skillId = req.params.skillId;
+  const skillId = Number(req.params.skillId);
 
   const deleted = await Skill.destroy({
     where: {
@@ -63,6 +54,7 @@ const deleteSkill = async (req, res) => {
 
   return res.send({
     status: 200,
+    id: skillId
   });
 };
 

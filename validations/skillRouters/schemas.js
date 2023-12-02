@@ -11,7 +11,7 @@ const updateVerifiedSkillSchema = Joi.object({
 });
 
 const deleteSkillSchema = Joi.object({
-  skillId: Joi.number().required(),
+  skillId: Joi.string().required(),
 });
 
 module.exports = {

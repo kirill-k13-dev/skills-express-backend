@@ -2,7 +2,8 @@ const {appLogger} = require("../helpers/logger");
 
 const middleware = (schema) => {
   return (req, res, next) => {
-    const { error } = schema.validate(req.body);
+
+    const { error } = schema.validate(req.method === 'DELETE' ? req.params : req.body);
     const valid = error == null;
 
     if (valid) {
